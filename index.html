@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Dispensasi SMAN 1 Magetan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active {
+            background-color: #1e40af;
+            color: white;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+            .print-only {
+                display: block !important;
+            }
+        }
+
+        .print-only {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Welcome Text -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden">
+                        <!-- Placeholder Logo SMAN 1 Magetan -->
+                        <img src="https://i.ibb.co.com/cXS7tYV8/images.png" alt="Logo SMAN 1 Magetan" onerror="this.src='https://ui-avatars.com/api/?name=SMAN+1+Magetan&background=1e40af&color=fff'">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-blue-900 leading-tight">E-Dispensasi</h1>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">SMAN 1 Magetan - Cerdas, Berkarakter</p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-2">
+                    <button onclick="showPage('dashboard')" id="btn-dashboard" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:bg-blue-50 font-medium">Dashboard</button>
+                    <button onclick="showPage('form')" id="btn-form" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:bg-blue-50 font-medium">Form Dispen</button>
+                    <button onclick="showPage('riwayat')" id="btn-riwayat" class="nav-link px-4 py-2 rounded-lg text-gray-600 hover:bg-blue-50 font-medium">Riwayat</button>
+                </nav>
+
+                <!-- Mobile Menu Button (Simple) -->
+                <div class="md:hidden">
+                    <select onchange="showPage(this.value)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <option value="dashboard">Dashboard</option>
+                        <option value="form">Form Dispen</option>
+                        <option value="riwayat">Riwayat</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 no-print">
+        
+        <!-- DASHBOARD PAGE -->
+        <div id="page-dashboard" class="page-content">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Aturan Dispensasi -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-blue-100 rounded-lg text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Aturan Dispensasi</h2>
+                    </div>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="bg-blue-500 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs mt-0.5 mr-3 shrink-0">1</span>
+                            Dispensasi hanya diberikan untuk kegiatan resmi sekolah, lomba, atau urusan mendesak.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-500 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs mt-0.5 mr-3 shrink-0">2</span>
+                            Siswa wajib mengisi form ini sebelum meninggalkan area sekolah atau kelas.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-500 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs mt-0.5 mr-3 shrink-0">3</span>
+                            Persetujuan akhir tetap bergantung pada kebijakan Guru Piket atau Kesiswaan.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tata Tertib -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-amber-100 rounded-lg text-amber-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Tata Tertib Dispen</h2>
+                    </div>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start italic">
+                            "Disiplin adalah kunci prestasi SMA Negeri 1 Magetan."
+                        </li>
+                        <li class="flex items-start">
+                            <div class="h-2 w-2 bg-amber-400 rounded-full mt-2 mr-3 shrink-0"></div>
+                            Siswa dilarang menyalahgunakan waktu dispensasi untuk keperluan di luar yang tertulis.
+                        </li>
+                        <li class="flex items-start">
+                            <div class="h-2 w-2 bg-amber-400 rounded-full mt-2 mr-3 shrink-0"></div>
+                            Wajib kembali ke sekolah tepat waktu sesuai jam yang telah disepakati.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM PAGE -->
+        <div id="page-form" class="page-content hidden">
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Form Pengajuan Dispensasi</h2>
+                
+                <form id="dispenForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Nama & NIS -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Lengkap</label>
+                            <input type="text" id="nama" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition" placeholder="Contoh: Budi Santoso">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">NIS</label>
+                            <input type="number" id="nis" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition" placeholder="Nomor Induk Siswa">
+                        </div>
+
+                        <!-- Kelas & Absen -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Kelas</label>
+                            <select id="kelas" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition">
+                                <optgroup label="Kelas X">
+                                    <script>
+                                        for(let i=1; i<=10; i++) document.write(`<option value="X-${i}">X-${i}</option>`);
+                                    </script>
+                                </optgroup>
+                                <optgroup label="Kelas XI IPA">
+                                    <script>
+                                        for(let i=1; i<=5; i++) document.write(`<option value="XI-${i} IPA">XI-${i} IPA</option>`);
+                                    </script>
+                                </optgroup>
+                                <optgroup label="Kelas XI IPS">
+                                    <script>
+                                        for(let i=6; i<=10; i++) document.write(`<option value="XI-${i} IPS">XI-${i} IPS</option>`);
+                                    </script>
+                                </optgroup>
+                                <optgroup label="Kelas XII IPA">
+                                    <script>
+                                        for(let i=1; i<=5; i++) document.write(`<option value="XII-${i} IPA">XII-${i} IPA</option>`);
+                                    </script>
+                                </optgroup>
+                                <optgroup label="Kelas XII IPS">
+                                    <script>
+                                        for(let i=6; i<=10; i++) document.write(`<option value="XII-${i} IPS">XII-${i} IPS</option>`);
+                                    </script>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Nomor Absen</label>
+                            <input type="number" id="absen" min="1" max="40" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition" placeholder="1-40">
+                        </div>
+
+                        <!-- Waktu & Tempat -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Sampai Jam Berapa?</label>
+                            <input type="time" id="jamSelesai" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Tempat Dispen</label>
+                            <input type="text" id="tempat" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition" placeholder="Contoh: GOR Magetan / Ruang OSIS">
+                        </div>
+                    </div>
+
+                    <!-- Alasan -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Deskripsi Alasan</label>
+                        <textarea id="alasan" rows="3" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition" placeholder="Jelaskan secara detail alasan dispensasi..."></textarea>
+                    </div>
+
+                    <!-- Pendukung -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Guru/Pembina Pendukung</label>
+                        <input type="text" id="guru" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition" placeholder="Nama Guru yang merekomendasikan">
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 rounded-lg shadow-lg transition transform hover:-translate-y-1 active:scale-95">
+                        Kirim Pengajuan Dispensasi
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- RIWAYAT PAGE -->
+        <div id="page-riwayat" class="page-content hidden">
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                <div class="p-6 border-b bg-gray-50 flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-gray-800">Daftar Siswa Dispensasi Hari Ini</h2>
+                    <span id="count-badge" class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">0 Data</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
+                                <th class="p-4 border-b">Waktu</th>
+                                <th class="p-4 border-b">Nama / NIS</th>
+                                <th class="p-4 border-b">Kelas</th>
+                                <th class="p-4 border-b">Keperluan</th>
+                                <th class="p-4 border-b">Status</th>
+                                <th class="p-4 border-b text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="riwayatTableBody" class="text-gray-700">
+                            <!-- Data injected here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="empty-state" class="p-12 text-center text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Belum ada data dispensasi untuk hari ini.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- PRINT PREVIEW (Hidden until print) -->
+    <div id="print-area" class="print-only p-12 bg-white">
+        <div class="border-4 border-double border-gray-800 p-8">
+            <div class="text-center mb-8 border-b-2 border-gray-800 pb-4">
+                <h1 class="text-2xl font-bold uppercase">Surat Keterangan Dispensasi Siswa</h1>
+                <h2 class="text-xl">SMA Negeri 1 Magetan</h2>
+                <p class="text-sm">Jl. Selosari, Kec. Magetan, Kab. Magetan, Jawa Timur</p>
+            </div>
+            
+            <div id="print-content" class="space-y-4 text-lg">
+                <!-- Content injected here -->
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 gap-12">
+                <div class="text-center">
+                    <p>Siswa Yang Bersangkutan,</p>
+                    <div class="h-24"></div>
+                    <p class="font-bold underline" id="print-nama-sign"></p>
+                </div>
+                <div class="text-center">
+                    <p>Guru Piket / Kesiswaan,</p>
+                    <div class="h-24"></div>
+                    <p class="">.........................................</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="toast" class="fixed bottom-5 right-5 hidden transform transition-all duration-300 translate-y-20 opacity-0 z-[100]">
+        <div class="bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span id="toast-message">Data berhasil disimpan!</span>
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        let dataDispen = [];
+
+        // UI Logic
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            // Remove active style from all links
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            // Show target page
+            document.getElementById(`page-${pageId}`).classList.remove('hidden');
+            // Add active style
+            document.getElementById(`btn-${pageId}`).classList.add('active');
+        }
+
+        // Form Logic
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxPfGbRCiErYxtVFoRTfauuWRmtIFl9l3fxVYtWypW-klBejVHKiUGDycjg2KPt4sEsiA/exec";
+
+document.getElementById('dispenForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const payload = {
+        nama: nama.value,
+        nis: nis.value,
+        kelas: kelas.value,
+        absen: absen.value,
+        jamSelesai: jamSelesai.value,
+        tempat: tempat.value,
+        alasan: alasan.value,
+        guru: guru.value
+    };
+
+    try {
+        await fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify(payload)
+        });
+
+        // tetap simpan lokal untuk UI
+        const newEntry = {
+            id: Date.now(),
+            timestamp: new Date().toLocaleTimeString('id-ID'),
+            ...payload,
+            status: "Aktif"
+        };
+
+        dataDispen.unshift(newEntry);
+        updateTable();
+        showToast("Berhasil kirim ke server!");
+
+        this.reset();
+        showPage('riwayat');
+
+    } catch (err) {
+        showToast("Gagal kirim data!");
+        console.error(err);
+    }
+});
+
+        function updateTable() {
+            const tbody = document.getElementById('riwayatTableBody');
+            const emptyState = document.getElementById('empty-state');
+            const badge = document.getElementById('count-badge');
+            
+            tbody.innerHTML = '';
+            badge.innerText = `${dataDispen.length} Data`;
+
+            if (dataDispen.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                dataDispen.forEach(item => {
+                    const row = `
+                        <tr class="hover:bg-gray-50 transition border-b border-gray-100">
+                            <td class="p-4 text-sm font-medium text-gray-500">${item.timestamp}</td>
+                            <td class="p-4">
+                                <div class="font-bold text-gray-800">${item.nama}</div>
+                                <div class="text-xs text-gray-500">NIS: ${item.nis}</div>
+                            </td>
+                            <td class="p-4">
+                                <span class="px-2 py-1 bg-gray-100 rounded text-xs font-semibold">${item.kelas}</span>
+                            </td>
+                            <td class="p-4 text-sm">
+                                <div class="truncate max-w-[200px] text-gray-600">${item.alasan}</div>
+                                <div class="text-xs text-blue-600 font-medium">Lokasi: ${item.tempat}</div>
+                            </td>
+                            <td class="p-4">
+                                <span class="px-2 py-1 ${item.status === 'Aktif' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'} rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                    ${item.status}
+                                </span>
+                            </td>
+                            <td class="p-4 text-center">
+                                <button onclick="printDispen(${item.id})" class="text-blue-600 hover:text-blue-800 p-2 rounded-full hover:bg-blue-50 transition" title="Cetak Surat">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
+            }
+        }
+
+        function printDispen(id) {
+            const item = dataDispen.find(d => d.id === id);
+            if(!item) return;
+
+            const printContent = document.getElementById('print-content');
+            printContent.innerHTML = `
+                <div class="grid grid-cols-3 gap-y-3">
+                    <div class="font-bold">Nama</div><div>:</div><div>${item.nama}</div>
+                    <div class="font-bold">NIS</div><div>:</div><div>${item.nis}</div>
+                    <div class="font-bold">Kelas / Absen</div><div>:</div><div>${item.kelas} / ${item.absen}</div>
+                    <div class="font-bold">Berlaku S/D</div><div>:</div><div>Pukul ${item.jamSelesai} WIB</div>
+                    <div class="font-bold">Tempat Tujuan</div><div>:</div><div>${item.tempat}</div>
+                    <div class="font-bold">Alasan / Kegiatan</div><div>:</div><div>${item.alasan}</div>
+                    <div class="font-bold">Guru Pendukung</div><div>:</div><div>${item.guru}</div>
+                </div>
+                <div class="mt-8 italic text-sm text-gray-600">
+                    * Harap tunjukkan surat ini kepada guru pengajar saat di kelas atau petugas keamanan di gerbang.
+                </div>
+            `;
+            document.getElementById('print-nama-sign').innerText = item.nama;
+            
+            window.print();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-20', 'opacity-0');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 3000);
+        }
+
+        // Initialize
+        window.onload = () => showPage('dashboard');
+    </script>
+</body>
+</html>
